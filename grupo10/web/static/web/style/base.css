@@ -1,8 +1,8 @@
 * {
     margin: 0;
     padding: 0;
-    background-color: black;
-    color: rgb(250, 235, 215);
+    background-color: wheat;
+    color: black;
 }
 body{
     display: flex;

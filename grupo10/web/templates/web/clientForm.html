@@ -2,10 +2,10 @@
 {% load static %}
 
 
-{% block titulo %} crear usuario {% endblock %}
+{% block titulo %} ingresar cliente {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'web/style/form.css' %}">
+<link rel="stylesheet" href="{% static 'web/style/clientForm.css' %}">
 {% endblock %}
 
 {% block main %}
@@ -14,8 +14,12 @@
 <form method="POST" action="{% url 'clientForm' %}">
 
     {% csrf_token %}
-    {{ clientForm }}
-    <input type="submit" value="Enviar">
+    {{ clientForm.name }}
+    {{ clientForm.lastname }}
+    {{ clientForm.phone }}
+    {{ clientForm.email }}
+    {{ clientForm.address }}
+    <input style="background-color: crimson; color:white" type="submit" value="Enviar">
 </form>
 {% endblock %}
 

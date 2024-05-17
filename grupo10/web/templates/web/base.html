@@ -6,18 +6,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block titulo %}{% endblock %}</title>
-    <!-- <link rel="stylesheet" href="{% static 'web/style/base.css' %}"> -->
+    <title>{% block titulo %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'web/style/base.css' %}">
 
-    {% block extra_css %}{% endblock %}
+    {% block extra_css %}
+    {% endblock %}
 </head>
 
-<body >
+<body>
     <header>
-        
+
         <nav>
             <ul style="display: flex; flex-direction: row; gap: 3rem; list-style: none; align-items: center;">
-                <li><h2>Es restó</h2></li>
+                <li>
+                    <h2>Es restó</h2>
+                </li>
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'clientForm' %}">Ingresar nuevo cliente</a></li>
             </ul>

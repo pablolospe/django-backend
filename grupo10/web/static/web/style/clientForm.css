@@ -1,0 +1,11 @@
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+input{
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 2rem;
+}
