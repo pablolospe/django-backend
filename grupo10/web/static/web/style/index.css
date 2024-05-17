@@ -1,0 +1,16 @@
+img{
+    margin: 1rem;
+    max-height: 10rem;
+    border-radius: 2rem;
+}
+h1{
+    background-color: blueviolet;
+    border-radius: 0.5rem;
+    border-top-right-radius: 2rem;
+    padding: 1rem;
+}
+
+h1, p {
+    width: 20rem;
+    margin: 0.5rem;
+}

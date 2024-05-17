@@ -1,0 +1,21 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+
+{% block titulo %} crear usuario {% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'web/style/form.css' %}">
+{% endblock %}
+
+{% block main %}
+<h1 class="centered">Crear Usuario</h1>
+
+<form method="POST" action="{% url 'clientForm' %}">
+
+    {% csrf_token %}
+    {{ clientForm }}
+    <input type="submit" value="Enviar">
+</form>
+{% endblock %}
+
