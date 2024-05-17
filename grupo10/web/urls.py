@@ -6,4 +6,5 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('clientForm/', views.clientForm, name='clientForm'),
+    path('menu/', views.menu, name='menu'),
 ]

@@ -1,0 +1,26 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+
+{% block titulo %} lista {% endblock %}
+{% block extra_css %}{% endblock %}
+
+{% block main %}
+<section>
+    {% for product in products %}
+    <article>
+        <span style="width: 40rem;">{{ product.name | title }} </span>
+        <span>{{ product.price }}</span>
+        <!-- {% if alumno.cuota_al_dia %}
+        <span style="color: green;"> al dia </span>
+        {% else %}
+        <span style="color: red;"> paga ra prata </span>
+        {% endif %} -->
+    </article>
+    {% empty %}
+    <article>
+        <p>No hay alumnos</p>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

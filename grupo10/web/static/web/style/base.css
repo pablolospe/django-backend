@@ -33,3 +33,7 @@ a{
 a:hover{
     color: brown;
 }
+article{
+    background-color: white;
+    display: flex;
+}
