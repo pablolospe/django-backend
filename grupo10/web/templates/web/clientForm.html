@@ -11,6 +11,14 @@
 {% block main %}
 <h3 class="centered">Ingresar nuevo cliente</h3>
 <br />
+{% if clientForm.non_field_errors %}
+<div class="error">
+    {% for error in clientForm.non_field_errors %}
+    <p>{{ error }}</p>
+    {% endfor %}
+</div>
+<br />
+{% endif %}
 
 <form method="POST" action="{% url 'clientForm' %}">
 
@@ -18,51 +26,50 @@
     <!-- {{ clientForm.as_p }} -->
 
     {{ clientForm.name }}
-    
     {% if clientForm.name.errors %}
     <div class="error">
         {% for error in clientForm.name.errors %}
-        <p  >{{ error }}</p>
+        <p>{{ error }}</p>
         {% endfor %}
     </div>
     {% endif %}
-    
+
     {{ clientForm.lastname }}
     {% if clientForm.lastname.errors %}
     <div class="error">
         {% for error in clientForm.lastname.errors %}
-        <p  >{{ error }}</p>
+        <p>{{ error }}</p>
         {% endfor %}
     </div>
     {% endif %}
-    
+
     {{ clientForm.phone }}
     {% if clientForm.phone.errors %}
     <div class="error">
         {% for error in clientForm.phone.errors %}
-        <p  >{{ error }}</p>
+        <p>{{ error }}</p>
         {% endfor %}
     </div>
     {% endif %}
-    
+
     {{ clientForm.email }}
     {% if clientForm.email.errors %}
     <div class="error">
         {% for error in clientForm.email.errors %}
-        <p  >{{ error }}</p>
+        <p>{{ error }}</p>
         {% endfor %}
     </div>
     {% endif %}
-    
+
     {{ clientForm.address }}
     {% if clientForm.address.errors %}
     <div class="error">
         {% for error in clientForm.address.errors %}
-        <p  >{{ error }}</p>
+        <p>{{ error }}</p>
         {% endfor %}
     </div>
     {% endif %}
-    
+
     <input class="hover-effect" type="submit" value="Enviar">
 </form>
 {% endblock %}
