@@ -6,7 +6,7 @@ from django.contrib import messages
 
 def index(request):
     context={
-        'nombre': 'Ernesto',
+        'name': 'Ernesto',
     }
 
     return render(request, 'web/index.html', context)
@@ -22,12 +22,11 @@ def clientForm(request):
         form = ClientForm(request.POST)
         context['clientForm'] = form
 
-        if(form.is_valid()):
-
+        if form.is_valid():
             print(request.POST)
             messages.success(request, 'El cliente fue dado de alta con éxito')
 
-        return redirect('index')
+            return redirect('index')
 
     return render(request, 'web/clientForm.html', context)
 
