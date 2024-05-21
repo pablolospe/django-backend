@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .forms import *
 from django.shortcuts import redirect
+from django.contrib import messages
 
 
 def index(request):
@@ -10,6 +11,7 @@ def index(request):
 
     return render(request, 'web/index.html', context)
 
+
 def clientForm(request):
     context={}
 
@@ -17,9 +19,13 @@ def clientForm(request):
         context['clientForm'] = ClientForm()
     
     else:
-        context['clientForm'] = ClientForm(request.POST)
+        form = ClientForm(request.POST)
+        context['clientForm'] = form
 
-        print(request.POST)
+        if(form.is_valid()):
+
+            print(request.POST)
+            messages.success(request, 'El cliente fue dado de alta con éxito')
 
         return redirect('index')
 
