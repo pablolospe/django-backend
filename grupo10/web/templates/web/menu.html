@@ -3,23 +3,22 @@
 
 
 {% block titulo %} lista {% endblock %}
-{% block extra_css %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'web/style/menu.css' %}">
+{% endblock %}
+
 
 {% block main %}
 <section>
     {% for product in products %}
     <article>
-        <span style="width: 40rem;">{{ product.name | title }} </span>
-        <span>{{ product.price }}</span>
-        <!-- {% if alumno.cuota_al_dia %}
-        <span style="color: green;"> al dia </span>
-        {% else %}
-        <span style="color: red;"> paga ra prata </span>
-        {% endif %} -->
+        <span >{{ product.name | title }} </span>
+        <span >$ {{ product.price|floatformat:2 }}</span>
     </article>
     {% empty %}
     <article>
-        <p>No hay alumnos</p>
+        <p>No hay productos disponibles</p>
     </article>
     {% endfor %}
 </section>

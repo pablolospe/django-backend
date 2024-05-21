@@ -1,0 +1,14 @@
+main{
+    /* background-color: blue; */
+}
+
+span{
+    padding-inline: 1rem;
+}
+
+article{
+    padding-top: 0.1rem;
+    background-color: wheat;
+    display: flex;
+    justify-content: space-between;
+}
