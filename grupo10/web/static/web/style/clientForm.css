@@ -9,3 +9,13 @@ input{
     padding: 0.5rem;
     border-radius: 2rem;
 }
+
+.hover-effect {
+    color: black;
+    transition: color 0.3s;
+}
+
+.hover-effect:hover {
+    color: red;
+    cursor: pointer;
+}
