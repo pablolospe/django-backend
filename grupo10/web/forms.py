@@ -21,8 +21,8 @@ class ClientForm(forms.Form):
         return self.cleaned_data["lastname"]
     
     def clean_phone(self):
-        if not isinstance(self.cleaned_data["phone"], (int, float)):
-            raise ValidationError("El teléfono debe estar compuesto solo por números.")
+        # if not isinstance(self.cleaned_data["phone"], (int, float)):
+        #     raise ValidationError("El teléfono debe estar compuesto solo por números.")
         
         return self.cleaned_data["phone"]
     
