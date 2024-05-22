@@ -35,3 +35,6 @@ class ClientForm(forms.Form):
             raise ValidationError("El usuario Carlos Lopez ya existe")
 
         return self.cleaned_data
+    
+
+    #prueba 
