@@ -2,6 +2,7 @@ form{
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    background-color: rgb(253, 240, 213);
 }
 
 input{
@@ -27,4 +28,12 @@ input{
     color: red;
     font-size: smaller;
     margin-top: -0.2rem;
+}
+
+main {
+    background-color: rgb(253, 240, 213);
+}
+
+h3 {
+    background-color:  rgb(253, 240, 213);
 }

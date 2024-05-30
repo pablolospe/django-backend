@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     background-color: wheat;
     color: black;
+    font-family: "Montserrat", sans-serif;
 }
 body{
     display: flex;
@@ -17,6 +20,7 @@ header, ul, h2, a{
 }
 footer{
     background-color: rgba(121,0,0);
+    color: rgb(253, 240, 213);
 }
 .centered{
     display: flex;
@@ -39,4 +43,8 @@ a:hover{
     color:aliceblue;
     padding: 1rem;
     border-radius: 1rem;
+}
+
+.navbar {
+    background-color: rgb(121,0,0) ;
 }

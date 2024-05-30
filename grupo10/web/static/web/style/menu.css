@@ -4,6 +4,7 @@ main{
 
 span{
     padding-inline: 1rem;
+    
 }
 
 article{
@@ -11,4 +12,5 @@ article{
     background-color: wheat;
     display: flex;
     justify-content: space-between;
+    color: rgb(0, 48, 73);
 }
