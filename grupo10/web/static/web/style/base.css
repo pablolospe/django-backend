@@ -3,7 +3,7 @@
 * {
     margin: 0;
     padding: 0;
-    background-color: wheat;
+    background-color: rgb(253, 240, 213);
     color: black;
     font-family: "Montserrat", sans-serif;
 }
@@ -16,10 +16,10 @@ header,main,footer{
     padding: 1rem;
 }
 header, ul, h2, a{
-    background-color: rgba(121,0,0);
+    background-color: rgb(121,0,0);
 }
 footer{
-    background-color: rgba(121,0,0);
+    background-color: rgb(121,0,0);
     color: rgb(253, 240, 213);
 }
 .centered{
@@ -33,6 +33,7 @@ main{
 }
 a{
     text-decoration: none;
+    background-color: rgb(253, 240, 213);
 }
 a:hover{
     color: brown;
@@ -47,4 +48,8 @@ a:hover{
 
 .navbar {
     background-color: rgb(121,0,0) ;
+}
+
+.navbar-brand {
+    background-color: rgb(253, 240, 213);
 }

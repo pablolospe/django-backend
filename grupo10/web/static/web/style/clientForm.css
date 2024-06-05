@@ -2,7 +2,7 @@ form{
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    background-color: rgb(253, 240, 213);
+    background-color: rgb(0, 48, 73);
 }
 
 input{
@@ -31,9 +31,10 @@ input{
 }
 
 main {
-    background-color: rgb(253, 240, 213);
+    background-color: rgb(0, 48, 73);
 }
 
 h3 {
-    background-color:  rgb(253, 240, 213);
+    background-color: rgb(0, 48, 73);
+    color: rgb(253, 250, 188) ;
 }
