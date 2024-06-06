@@ -13,7 +13,7 @@
 <section>
     {% for product in products %}
     <article>
-        <span >{{ product.name | title }} </span>
+        <span >{{ product.name | title }} ({{ product.category}})</span>
         <span >$ {{ product.price|floatformat:2 }}</span>
     </article>
     {% empty %}

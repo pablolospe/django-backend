@@ -61,10 +61,10 @@
     </div>
     {% endif %}
 
-    {{ clientForm.address }}
-    {% if clientForm.address.errors %}
+    {{ clientForm.dni }}
+    {% if clientForm.dni.errors %}
     <div class="error">
-        {% for error in clientForm.address.errors %}
+        {% for error in clientForm.dni.errors %}
         <p>{{ error }}</p>
         {% endfor %}
     </div>

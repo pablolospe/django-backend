@@ -6,7 +6,7 @@ class ClientForm(forms.Form):
     lastname = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'placeholder': 'Apellido'}))
     phone = forms.CharField(max_length=15, required=True, widget=forms.TextInput(attrs={'placeholder': 'Teléfono'}))
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'placeholder': 'Correo electrónico'}))
-    address = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Dirección'}))
+    dni = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'DNI'}))
 
     def clean_name(self):
         if not self.cleaned_data["name"].isalpha():
