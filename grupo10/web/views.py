@@ -3,6 +3,7 @@ from .forms import *
 from django.shortcuts import redirect
 from django.contrib import messages
 from .models import Product, Client
+from django.views.generic.list import ListView
 
 
 def index(request):
@@ -67,11 +68,15 @@ def menu(request):
     return render(request, 'web/menu.html', context)
 
 
-def clients(request):
+# def clients(request):
+#     clients = Client.objects.all().order_by('id')
+#     context={
+#         'clients': clients,
+#     }
+#     return render(request, 'web/clients.html', context)
 
-    clients = Client.objects.all().order_by('id')
-    context={
-        'clients': clients,
-    }
-
-    return render(request, 'web/clients.html', context)
+class ClientListView(ListView):
+    model=Client
+    context_object_name='clients'
+    template_name='web/clients.html'
+    ordering=['id']

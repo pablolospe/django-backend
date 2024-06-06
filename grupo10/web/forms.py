@@ -1,5 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
+from .models import Client
+import re
 
 class ClientForm(forms.Form):
     name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'placeholder': 'Nombre'}))
@@ -9,13 +11,15 @@ class ClientForm(forms.Form):
     dni = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'DNI'}))
 
     def clean_name(self):
-        if not self.cleaned_data["name"].isalpha():
+        name = self.cleaned_data["name"]
+        if not re.match(r'^[A-Za-z\s]+$', name):
             raise ValidationError("El nombre solo puede estar compuesto por letras")
 
         return self.cleaned_data["name"]
 
     def clean_lastname(self):
-        if not self.cleaned_data["lastname"].isalpha():
+        lastname = self.cleaned_data["lastname"]
+        if not re.match(r'^[A-Za-z\s]+$', lastname):
             raise ValidationError("El apellido debe estar compuesto solo por letras.")
         
         return self.cleaned_data["lastname"]
@@ -28,10 +32,12 @@ class ClientForm(forms.Form):
     
     def clean(self):
         cleaned_data = super().clean()
-        name = cleaned_data.get("name")
-        lastname = cleaned_data.get("lastname")
+        email = cleaned_data.get("email")
+        clients = Client.objects.all()
+        print(clients)
         
-        if name == "Carlos":
-            raise ValidationError("El usuario Carlos Lopez ya existe")
+        for client in clients:
+            if email == client.email:
+                raise ValidationError("El email ya fue ingresado")
 
         return self.cleaned_data
