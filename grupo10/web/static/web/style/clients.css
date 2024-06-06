@@ -1,0 +1,15 @@
+main{
+    border-radius: 1rem;
+}
+
+span{
+    padding-inline: 1rem;
+}
+
+article{
+    border: solid 2px black ;
+    padding-top: 0.1rem;
+    background-color: wheat;
+    display: flex;
+    justify-content: space-between;
+}

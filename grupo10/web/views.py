@@ -13,7 +13,11 @@ def index(request):
 
 
 def clientForm(request):
-    context={}
+
+    clients = Client.objects.all()
+    context={
+        'clients': clients,
+    }
 
     if (request.method == "GET"):
         context['clientForm'] = ClientForm()
@@ -39,7 +43,6 @@ def clientForm(request):
     return render(request, 'web/clientForm.html', context)
 
 def menu(request):
-
     products = Product.objects.all().order_by('id')
     context = {
         'products': products
@@ -61,5 +64,14 @@ def menu(request):
         #     {'name': 'Mineral Water', 'price': 15.0, 'category': 'drink', 'description': 'Bottled mineral water served chilled.'},
         # ]
     }
-
     return render(request, 'web/menu.html', context)
+
+
+def clients(request):
+
+    clients = Client.objects.all().order_by('id')
+    context={
+        'clients': clients,
+    }
+
+    return render(request, 'web/clients.html', context)

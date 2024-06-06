@@ -1,0 +1,28 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+
+{% block titulo %} clientes {% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'web/style/client.css' %}">
+{% endblock %}
+
+
+{% block main %}
+<section>
+    {% for client in clients %}
+    <article>
+        <h3 >{{ client.name | title }} {{ client.lastname | title }}</h3>
+        <p >email: {{ client.email }}</p>
+        <p >phone: {{ client.phone }}</p>
+        <p >dni: {{ client.dni }}</p>
+        <br>
+    </article>
+    {% empty %}
+    <article>
+        <p>No hay clientes disponibles</p>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}
