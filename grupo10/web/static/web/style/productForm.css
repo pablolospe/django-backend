@@ -1,0 +1,30 @@
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+input{
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 2rem;
+}
+
+.hover-effect {
+    width: 20rem;
+    color: black;
+    transition: color 0.3s;
+}
+
+.hover-effect:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.error, p{
+    justify-content: center;
+    align-self: center;
+    color: red;
+    font-size: smaller;
+    margin-top: -0.2rem;
+}
