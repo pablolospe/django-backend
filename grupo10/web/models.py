@@ -11,9 +11,20 @@ class Client(models.Model):
         return f"{self.name} {self.lastname} phone:{self.phone} email:{self.email} dni:{self.dni}"
 
 class Product(models.Model):
+    class CategoryChoices(models.TextChoices):
+        MAIN = 'MAIN', 'Principal'
+        SIDE = 'SIDE', 'Acompañamiento'
+        DESSERT = 'DESRT', 'Postre'
+        SALAD = 'SALAD', 'Ensalada'
+        DRINK = 'DRINK', 'Bebida'
+
     name = models.CharField(max_length=100, verbose_name="Nombre")
     price = models.FloatField(max_length=100, verbose_name="Precio")
-    category = models.CharField(max_length=100, verbose_name="Categoría")
+    category = models.CharField(
+        max_length=5,
+        choices=CategoryChoices.choices,
+        verbose_name="Categoría"
+    )
     description = models.CharField(max_length=100, verbose_name="Descripción")
 
     def __str__(self):

@@ -6,9 +6,7 @@ from .models import Product, Client
 from django.views.generic.list import ListView
 
 def index(request):
-    context={
-        'name': 'Ernesto',
-    }
+    context={}
     return render(request, 'web/index.html', context)
 
 def clientForm(request):
