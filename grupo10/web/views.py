@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from .models import Product, Client
 from django.views.generic.list import ListView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def index(request):
     context={}
@@ -48,13 +50,13 @@ def menu(request):
     }
     return render(request, 'web/menu.html', context)
 
-class ClientListView(ListView):
+class ClientListView(LoginRequiredMixin, ListView):
     model=Client
     context_object_name='clients'
     template_name='web/clients.html'
     ordering=['id']
 
-
+@login_required
 def productForm(request):
     products = Product.objects.all()
     context={'products': products }

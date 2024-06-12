@@ -15,20 +15,24 @@
 
 <body>
     <header>
-        <nav id="nav" style="display: flex; flex-direction: row; justify-content: space-between;">
-            <ul style="display: flex; flex-direction: row; gap: 3rem; list-style: none; align-items: center;">
+        <nav class="nav">
+            <ul class="ulnav">
                 <li>
                     <h2>Es restó</h2>
                 </li>
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'menu' %}">Menú</a></li>
-                <li><a href="{% url 'clients' %}">Lista de clientes</a></li>
                 <li><a href="{% url 'clientForm' %}">Ingresar nuevo cliente</a></li>
-                <li><a href="{% url 'productForm' %}">Crear nuevo producto</a></li>
+                {% if user.is_authenticated %}
+                {% if perms.web.view_client %}<li><a href="{% url 'clients' %}">Lista de clientes</a></li>{% endif %}
+                {% if perms.web.create_product %}<li><a href="{% url 'productForm' %}">Crear nuevo producto</a></li>{% endif %}
+                {% endif %}
             </ul>
+
             <div>
-                {% if not user.is_authenticated %}<a class="login button" href="{% url 'login' %}">Login</a> {%endif%}
-                {% if user.is_authenticated %}<a class="logout button" href="{% url 'logout' %}">Logout</a> {%endif%}
+                {% if user.is_authenticated %}<div class="user" >Hola, {{ user.username | title }}</div>{% endif %}
+                {% if not user.is_authenticated %}<a class="login" href="{% url 'login' %}">Login</a> {% endif %}
+                {% if user.is_authenticated %}<a class="logout" href="{% url 'logout' %}">Logout</a> {% endif %}
             </div>
         </nav>
     </header>
