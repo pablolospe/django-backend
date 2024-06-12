@@ -4,6 +4,7 @@
     background-color: wheat;
     color: black;
 }
+
 body{
     display: flex;
     flex-direction: column;
@@ -39,4 +40,11 @@ a:hover{
     color:aliceblue;
     padding: 1rem;
     border-radius: 1rem;
+}
+#nav{
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between;
+    /* background-color: rgba(240, 248, 255, 0.2); */
+    background-color: red;
 }
