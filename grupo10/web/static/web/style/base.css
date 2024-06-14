@@ -10,14 +10,15 @@ body{
     flex-direction: column;
     min-height: 100vh;
 }
-header,main,footer{
+header, main, footer{
     padding: 1rem;
 }
-header{
-    background-color: rgba(240, 248, 255, 0.2);
+header, nav, ul, li, a, h2{
+    background-color: rgb(249, 232, 199);
+    
 }
 footer{
-    background-color: rgba(240, 248, 255, 0.2);
+    background-color: rgb(249, 232, 199);
 }
 .centered{
     display: flex;
@@ -46,7 +47,6 @@ a:hover{
     flex-direction: row; 
     justify-content: space-between;
     align-items: center;
-    
 }
 .ulnav{
     display: flex; 
@@ -62,7 +62,7 @@ a:hover{
     border-radius: 1rem;
 }
 .user{
-    
+    background-color: rgb(249, 232, 199);
     position: absolute;
     right: 10rem;
     color: black;
