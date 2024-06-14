@@ -1,0 +1,57 @@
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+input{
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 2rem;
+    margin-inline: auto;
+}
+select{
+    background-color: white;
+    padding-right: 1rem;
+    padding: 0.5rem;
+    border-radius: 2rem;
+}
+
+.hover-effect {
+    width: 20rem;
+    color: black;
+    transition: color 0.3s;
+}
+
+.hover-effect:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.error, p{
+    justify-content: center;
+    align-self: center;
+    color: red;
+    font-size: smaller;
+    margin-top: -0.2rem;
+}
+th{
+    /* text-align: start; */
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+td:nth-child(2){
+    font-size: 1.2rem;
+    width: 6rem;
+}
+td:nth-child(1) {
+    width: 1rem;
+}
+td:nth-child(3) {
+    text-align: end;
+    width: 1rem;
+}
+.table{
+    margin-inline: 4rem;
+    justify-content: center;
+}

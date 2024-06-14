@@ -17,13 +17,13 @@ class OrderForm(forms.ModelForm):
 
     def render_products(self):
         products_html = '<table class="table">'
-        products_html += '<tr><th>Seleccionar</th><th>Producto</th><th>Precio</th><th>Categoría</th></tr>'
+        products_html += '<tr><th></th><th>Producto</th><th>Precio</th></tr>'
         for product in self.fields['products'].queryset:
             products_html += f'<tr>'
             products_html += f'<td><input type="checkbox" name="products" value="{product.id}"></td>'
             products_html += f'<td>{product.name}</td>'
             products_html += f'<td>{product.price}</td>'
-            products_html += f'<td>{product.category}</td>'
+            # products_html += f'<td>{product.category}</td>'
             products_html += f'</tr>'
         products_html += '</table>'
         return products_html

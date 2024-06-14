@@ -4,11 +4,11 @@
 {% block titulo %} pedido {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'web/style/productForm.css' %}">
+<link rel="stylesheet" href="{% static 'web/style/orderForm.css' %}">
 {% endblock %}
 
 {% block main %}
-<h3 class="centered">Hacer pedido</h3>
+<h1 class="centered">Hacer pedido</h1>
 <br />
 {% if form.non_field_errors %}
 <div class="error">
