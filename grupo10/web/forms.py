@@ -8,13 +8,12 @@ class OrderForm(forms.ModelForm):
         model = Order
         fields = ['products', 'client']
         widgets = {
-            'products': forms.SelectMultiple(attrs={'class': 'form-control'})
+            'products': forms.CheckboxSelectMultiple(attrs={'class': 'form-control'})
         }
 
     def __init__(self, *args, **kwargs):
         super(OrderForm, self).__init__(*args, **kwargs)
         self.fields['products'].queryset = Product.objects.all()
-
 
 
 class ClientForm(forms.Form):
