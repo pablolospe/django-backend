@@ -15,6 +15,18 @@ class OrderForm(forms.ModelForm):
         super(OrderForm, self).__init__(*args, **kwargs)
         self.fields['products'].queryset = Product.objects.all()
 
+    def render_products(self):
+        products_html = '<table class="table">'
+        products_html += '<tr><th>Seleccionar</th><th>Producto</th><th>Precio</th><th>Categoría</th></tr>'
+        for product in self.fields['products'].queryset:
+            products_html += f'<tr>'
+            products_html += f'<td><input type="checkbox" name="products" value="{product.id}"></td>'
+            products_html += f'<td>{product.name}</td>'
+            products_html += f'<td>{product.price}</td>'
+            products_html += f'<td>{product.category}</td>'
+            products_html += f'</tr>'
+        products_html += '</table>'
+        return products_html
 
 class ClientForm(forms.Form):
     name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'placeholder': 'Nombre'}))
