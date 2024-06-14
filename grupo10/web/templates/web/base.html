@@ -18,15 +18,16 @@
         <nav class="nav">
             <ul class="ulnav">
                 <li>
-                    <h2>Es restó</h2>
+                    <h2>
+                    <a href="{% url 'index' %}">Es restó</a>
+                    </h2>
                 </li>
-                <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'menu' %}">Menú</a></li>
-                <li><a href="{% url 'clientForm' %}">Ingresar nuevo cliente</a></li>
+                <li><a href="{% url 'clientForm' %}">Ingresar <br/> cliente</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'orderForm' %}">Hacer pedido!</a></li>
-                {% if perms.web.view_client %}<li><a href="{% url 'clients' %}">Lista de clientes</a></li>{% endif %}
-                {% if perms.web.create_product %}<li><a href="{% url 'productForm' %}">Crear nuevo producto</a></li>{% endif %}
+                {% if perms.web.view_client %}<li><a href="{% url 'clients' %}">Lista de <br/> clientes</a></li>{% endif %}
+                {% if perms.web.create_product %}<li><a href="{% url 'productForm' %}">Ingresar <br/> producto</a></li>{% endif %}
                 {% endif %}
             </ul>
 
