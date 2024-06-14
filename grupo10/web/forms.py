@@ -1,7 +1,21 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import Client, Product
+from .models import Client, Product, Order
 import re
+
+class OrderForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = ['products', 'client']
+        widgets = {
+            'products': forms.SelectMultiple(attrs={'class': 'form-control'})
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(OrderForm, self).__init__(*args, **kwargs)
+        self.fields['products'].queryset = Product.objects.all()
+
+
 
 class ClientForm(forms.Form):
     name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'placeholder': 'Nombre'}))
@@ -24,11 +38,11 @@ class ClientForm(forms.Form):
         
         return self.cleaned_data["lastname"]
     
-    def clean_phone(self):
-        # if not isinstance(self.cleaned_data["phone"], (int, float)):
-        #     raise ValidationError("El teléfono debe estar compuesto solo por números.")
+    # def clean_phone(self):
+    #     # if not isinstance(self.cleaned_data["phone"], (int, float)):
+    #     #     raise ValidationError("El teléfono debe estar compuesto solo por números.")
         
-        return self.cleaned_data["phone"]
+    #     return self.cleaned_data["phone"]
     
     def clean(self):
         cleaned_data = super().clean()
@@ -41,30 +55,6 @@ class ClientForm(forms.Form):
                 raise ValidationError("El email ya fue ingresado")
 
         return self.cleaned_data
-
-# class ProductForm(forms.Form):
-#     name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'placeholder': 'Nombre del plato'}))
-#     price = forms.FloatField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Precio'}))
-#     category = forms.CharField(max_length=15, required=True, widget=forms.TextInput(attrs={'placeholder': 'Categoría'}))
-#     description = forms.CharField(max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Descripción'}))
-
-#     def clean_name(self):
-#         name = self.cleaned_data["name"]
-#         if not re.match(r'^[A-Za-z\s]+$', name):
-#             raise ValidationError("El nombre solo puede estar compuesto por letras")
-
-#         return self.cleaned_data["name"]
-    
-#     def clean(self):
-#         cleaned_data = super().clean()
-#         name = cleaned_data.get("name")
-#         products = Product.objects.all()
-        
-#         for product in products:
-#             if name == product.name:
-#                 raise ValidationError("El producto ya fue ingresado")
-
-#         return self.cleaned_data
 
 class ProductForm(forms.ModelForm):
     class Meta:

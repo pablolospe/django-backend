@@ -1,0 +1,83 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+
+{% block titulo %} pedido {% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'web/style/productForm.css' %}">
+{% endblock %}
+
+{% block main %}
+<h3 class="centered">Hacer pedido</h3>
+<br />
+{% if productForm.non_field_errors %}
+<div class="error">
+    {% for error in productForm.non_field_errors %}
+    <p>{{ error }}</p>
+    {% endfor %}
+</div>
+<br />
+{% endif %}
+
+<form method="POST" action="{% url 'orderForm' %}">
+
+    {% csrf_token %}
+    <!-- {{ productForm.as_p }} -->
+    {{ form.as_p }}
+    <!-- {{ productForm.name }}
+    {% if productForm.name.errors %}
+    <div class="error">
+        {% for error in productForm.name.errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {{ productForm.price }}
+    {% if productForm.price.errors %}
+    <div class="error">
+        {% for error in productForm.price.errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {{ productForm.category }}
+    {% if productForm.category.errors %}
+    <div class="error">
+        {% for error in productForm.category.errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {{ productForm.description }}
+    {% if productForm.description.errors %}
+    <div class="error">
+        {% for error in productForm.description.errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %} -->
+
+    <input class="hover-effect" type="submit" value="Enviar">
+</form>
+{% endblock %}
+
+<!-- order_form.html -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Order</title>
+</head>
+<body>
+    <h1>Create Order</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html> -->

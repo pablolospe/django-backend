@@ -1,9 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import *
-from django.shortcuts import redirect
+from .models import Product, Client
 from django.contrib import messages
 from django.contrib.auth import logout
-from .models import Product, Client
 from django.views.generic.list import ListView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -81,6 +80,32 @@ def productForm(request):
             return redirect('index')
 
     return render(request, 'web/productForm.html', context)
+
+# @login_required
+# def orderForm(request):
+#     if request.method == 'POST':
+#         form = OrderForm(request.POST)
+#         if form.is_valid():
+#             order = form.save(commit=False)
+#             print(request.user)
+#             order.client = request.user  # Asignar el cliente como el usuario autenticado
+#             order.save()
+#             # form.save_m2m()  # Guardar la relación many-to-many después de guardar la instancia
+#             return redirect('index')  # Cambia esto por tu URL de éxito
+#     else:
+#         form = OrderForm()
+#     return render(request, 'web/orderForm.html', {'form': form})
+
+def orderForm(request):
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')  # Cambia esto por tu URL de éxito
+    else:
+        form = OrderForm()
+    return render(request, 'web/orderForm.html', {'form': form})
+
 
 # def clients(request):
 #     clients = Client.objects.all().order_by('id')

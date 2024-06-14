@@ -24,6 +24,7 @@
                 <li><a href="{% url 'menu' %}">Menú</a></li>
                 <li><a href="{% url 'clientForm' %}">Ingresar nuevo cliente</a></li>
                 {% if user.is_authenticated %}
+                <li><a href="{% url 'orderForm' %}">Hacer pedido!</a></li>
                 {% if perms.web.view_client %}<li><a href="{% url 'clients' %}">Lista de clientes</a></li>{% endif %}
                 {% if perms.web.create_product %}<li><a href="{% url 'productForm' %}">Crear nuevo producto</a></li>{% endif %}
                 {% endif %}

@@ -11,6 +11,7 @@ urlpatterns = [
     
     path('clientForm/', views.clientForm, name='clientForm'),
     path('productForm/', views.productForm, name='productForm'),
+    path('orderForm/', views.orderForm, name='orderForm'),
 
     path('menu/', views.menu, name='menu'),
     path('clients/', views.ClientListView.as_view(), name='clients'),
