@@ -44,19 +44,13 @@ class ClientForm(forms.ModelForm):
         cleaned_data = super().clean()
         password = cleaned_data.get("password")
         confirm_password = cleaned_data.get("confirm_password")
-
-        if password and confirm_password and password != confirm_password:
-            raise forms.ValidationError("Passwords do not match")
-
-        return cleaned_data
-    
-    def clean(self):
-        cleaned_data = super().clean()
         email = cleaned_data.get("email")
         username = cleaned_data.get("username")
         clients = Client.objects.all()
         users = User.objects.all()
-        # print(clients)
+
+        if password and confirm_password and password != confirm_password:
+            raise forms.ValidationError("Las constraseñas no coinciden")
         
         for client in clients:
             if email == client.email:
