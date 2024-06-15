@@ -1,15 +1,14 @@
 {% extends "web/base.html" %}
 {% load static %}
 
-
-{% block titulo %} ingresar cliente {% endblock %}
+{% block titulo %} Registrate {% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'web/style/clientForm.css' %}">
 {% endblock %}
 
 {% block main %}
-<h3 class="centered">Ingresar nuevo cliente</h3>
+<h3 class="centered">Registrate</h3>
 <br />
 {% if clientForm.non_field_errors %}
 <div class="error">
@@ -24,20 +23,47 @@
 
     {% csrf_token %}
     <!-- {{ clientForm.as_p }} -->
+    
+        {{ clientForm.username }}
+        {% if clientForm.username.errors %}
+        <div class="error">
+            {% for error in clientForm.username.errors %}
+            <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
 
-    {{ clientForm.name }}
-    {% if clientForm.name.errors %}
+    {{ clientForm.first_name }}
+    {% if clientForm.first_name.errors %}
     <div class="error">
-        {% for error in clientForm.name.errors %}
+        {% for error in clientForm.first_name.errors %}
         <p>{{ error }}</p>
         {% endfor %}
     </div>
     {% endif %}
 
-    {{ clientForm.lastname }}
-    {% if clientForm.lastname.errors %}
+    {{ clientForm.last_name }}
+    {% if clientForm.last_name.errors %}
     <div class="error">
-        {% for error in clientForm.lastname.errors %}
+        {% for error in clientForm.last_name.errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {{ clientForm.password }}
+    {% if clientForm.password.errors %}
+    <div class="error">
+        {% for error in clientForm.password.errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {{ clientForm.confirm_password }}
+    {% if clientForm.confirm_password.errors %}
+    <div class="error">
+        {% for error in clientForm.confirm_password.errors %}
         <p>{{ error }}</p>
         {% endfor %}
     </div>

@@ -28,32 +28,26 @@ class OrderForm(forms.ModelForm):
         products_html += '</table>'
         return products_html
 
-class ClientForm(forms.Form):
-    name = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'placeholder': 'Nombre'}))
-    lastname = forms.CharField(max_length=100, required=True, widget=forms.TextInput(attrs={'placeholder': 'Apellido'}))
-    phone = forms.CharField(max_length=15, required=True, widget=forms.TextInput(attrs={'placeholder': 'Teléfono'}))
-    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'placeholder': 'Correo electrónico'}))
-    dni = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'DNI'}))
+class ClientForm(forms.ModelForm):
+    username = forms.CharField(max_length=30, required=True, widget=forms.TextInput(attrs={'placeholder': 'Usuario'}))
+    first_name = forms.CharField(max_length=30, required=True, widget=forms.TextInput(attrs={'placeholder': 'Nombre'}))
+    last_name = forms.CharField(max_length=30, required=True, widget=forms.TextInput(attrs={'placeholder': 'Apellido'}))
+    password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+    confirm_password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Confirmar Password'}))
 
-    def clean_name(self):
-        name = self.cleaned_data["name"]
-        if not re.match(r'^[A-Za-z\s]+$', name):
-            raise ValidationError("El nombre solo puede estar compuesto por letras")
+    class Meta:
+        model = Client
+        fields = ['first_name', 'last_name', 'phone', 'email', 'dni', 'password', 'confirm_password']
 
-        return self.cleaned_data["name"]
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get("password")
+        confirm_password = cleaned_data.get("confirm_password")
 
-    def clean_lastname(self):
-        lastname = self.cleaned_data["lastname"]
-        if not re.match(r'^[A-Za-z\s]+$', lastname):
-            raise ValidationError("El apellido debe estar compuesto solo por letras.")
-        
-        return self.cleaned_data["lastname"]
-    
-    # def clean_phone(self):
-    #     # if not isinstance(self.cleaned_data["phone"], (int, float)):
-    #     #     raise ValidationError("El teléfono debe estar compuesto solo por números.")
-        
-    #     return self.cleaned_data["phone"]
+        if password and confirm_password and password != confirm_password:
+            raise forms.ValidationError("Passwords do not match")
+
+        return cleaned_data
     
     def clean(self):
         cleaned_data = super().clean()
@@ -66,6 +60,20 @@ class ClientForm(forms.Form):
                 raise ValidationError("El email ya fue ingresado")
 
         return self.cleaned_data
+
+    def clean_first_name(self):
+        first_name = self.cleaned_data["first_name"]
+        if not re.match(r'^[A-Za-z\s]+$', first_name):
+            raise ValidationError("El nombre solo puede estar compuesto por letras")
+
+        return self.cleaned_data["first_name"]
+
+    def clean_last_name(self):
+        last_name = self.cleaned_data["last_name"]
+        if not re.match(r'^[A-Za-z\s]+$', last_name):
+            raise ValidationError("El apellido debe estar compuesto solo por letras.")
+        
+        return self.cleaned_data["last_name"]
 
 class ProductForm(forms.ModelForm):
     class Meta:

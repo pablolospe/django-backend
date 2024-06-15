@@ -1,14 +1,21 @@
 from django.db import models
+from grupo10 import settings
 
 class Client(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Nombre")
-    lastname = models.CharField(max_length=100, verbose_name="Apellido")
-    phone = models.CharField(max_length=100, verbose_name="Teléfono")
+    # name = models.CharField(max_length=100, verbose_name="Nombre")
+    # lastname = models.CharField(max_length=100, verbose_name="Apellido")
     email = models.EmailField(max_length=100, verbose_name="Email")
+    phone = models.CharField(max_length=100, verbose_name="Teléfono")
     dni = models.CharField(max_length=100, verbose_name="DNI")
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
 
     def __str__(self):
-        return f"{self.name} {self.lastname} phone:{self.phone} email:{self.email} dni:{self.dni}"
+        return f"{self.user.first_name} {self.user.last_name} | dni:{self.dni}"
 
 class Product(models.Model):
     class CategoryChoices(models.TextChoices):

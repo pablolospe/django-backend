@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import *
 from .models import Product, Client
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.views.generic.list import ListView
@@ -18,29 +19,38 @@ def user_logout(request):
 
 def clientForm(request):
     clients = Client.objects.all()
-    context={'clients': clients }
-    if (request.method == "GET"):
-        context['clientForm'] = ClientForm()
+    context = {'clients': clients}
     
+    if request.method == "GET":
+        context['clientForm'] = ClientForm()
     else:
         form = ClientForm(request.POST)
         context['clientForm'] = form
 
         if form.is_valid():
-            new_client = Client(
-                name= form.cleaned_data['name'],
-                lastname= form.cleaned_data['lastname'],
-                phone= form.cleaned_data['phone'],
-                email= form.cleaned_data['email'],
-                dni= form.cleaned_data['dni'],
+            user = User(
+                first_name=form.cleaned_data['first_name'],
+                last_name=form.cleaned_data['last_name'],
+                username=form.cleaned_data['username'],  # Asigna un username, por ejemplo el dni
+                email=form.cleaned_data['email']  # Asegúrate de asignar el email también
             )
-            new_client.save()
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+
+            client = Client(
+                user=user,
+                phone=form.cleaned_data['phone'],
+                email=form.cleaned_data['email'],
+                # dni=form.cleaned_data['dni'],
+            )
+            client.save()
 
             messages.success(request, 'El cliente fue dado de alta con éxito')
-
             return redirect('index')
 
     return render(request, 'web/clientForm.html', context)
+
+
 
 def menu(request):
     products = Product.objects.all().order_by('id')
