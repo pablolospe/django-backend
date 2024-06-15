@@ -2,8 +2,6 @@ from django.db import models
 from grupo10 import settings
 
 class Client(models.Model):
-    # name = models.CharField(max_length=100, verbose_name="Nombre")
-    # lastname = models.CharField(max_length=100, verbose_name="Apellido")
     email = models.EmailField(max_length=100, verbose_name="Email")
     phone = models.CharField(max_length=100, verbose_name="Teléfono")
     dni = models.CharField(max_length=100, verbose_name="DNI")
@@ -43,4 +41,4 @@ class Order(models.Model):
     products = models.ManyToManyField(Product, verbose_name="Productos")
 
     def __str__(self):
-        return f"{self.date} client:{self.client.name} {self.client.lastname} productos:{self.products.all()}"
+        return f"{self.date} | client:{self.client.user.first_name} {self.client.user.last_name} | productos:{self.products.all()}"

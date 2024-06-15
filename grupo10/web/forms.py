@@ -7,7 +7,7 @@ import re
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ['products', 'client']
+        fields = ['products']
         widgets = {
             'products': forms.CheckboxSelectMultiple(attrs={'class': 'form-control'})
         }

@@ -51,7 +51,6 @@ def clientForm(request):
     return render(request, 'web/clientForm.html', context)
 
 
-
 def menu(request):
     products = Product.objects.all().order_by('id')
     context = {
@@ -90,39 +89,22 @@ def productForm(request):
             return redirect('index')
 
     return render(request, 'web/productForm.html', context)
-
-# @login_required
-# def orderForm(request):
-#     if request.method == 'POST':
-#         form = OrderForm(request.POST)
-#         if form.is_valid():
-#             order = form.save(commit=False)
-#             print(request.user)
-#             order.client = request.user  # Asignar el cliente como el usuario autenticado
-#             order.save()
-#             # form.save_m2m()  # Guardar la relación many-to-many después de guardar la instancia
-#             return redirect('index')  # Cambia esto por tu URL de éxito
-#     else:
-#         form = OrderForm()
-#     return render(request, 'web/orderForm.html', {'form': form})
+    
 
 def orderForm(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('index')  # Cambia esto por tu URL de éxito
+            order = form.save(commit=False)
+            order.client = request.user.client  # Asume que el usuario tiene un objeto cliente asociado
+            order.save()
+            form.save_m2m()  # Guarda las relaciones many-to-many
+            messages.success(request, 'Pedido realizado con éxito')
+            return redirect('index')
     else:
         form = OrderForm()
+
     return render(request, 'web/orderForm.html', {'form': form})
-
-
-# def clients(request):
-#     clients = Client.objects.all().order_by('id')
-#     context={
-#         'clients': clients,
-#     }
-#     return render(request, 'web/clients.html', context)
 
 # 'products': [
 #     {'name': 'Classic Burger', 'price': 50.0, 'category': 'MAIN', 'description': 'A classic beef burger with lettuce, tomato, and cheese.'},
