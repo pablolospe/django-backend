@@ -36,7 +36,9 @@
     <input type="submit" value="login">
     <input type="hidden" name="next" value="{{ next }}">
     </form>
+    <br/>
+    <br/>
 
-    {# Assumes you set up the password_reset view in your URLconf #}
+    <p><a style="padding: 1rem; border-radius: 1rem;" href="{% url 'clientForm' %}">Si aún no tenés usuario, registrate!</a></p>
     
 {% endblock %}

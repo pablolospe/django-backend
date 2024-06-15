@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block titulo %} {% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'web/favicon.svg' %}">
     <link rel="stylesheet" href="{% static 'web/style/base.css' %}">
 
     {% block extra_css %}
@@ -23,7 +24,7 @@
                     </h2>
                 </li>
                 <li><a href="{% url 'menu' %}">Menú</a></li>
-                <li><a href="{% url 'clientForm' %}">Ingresar <br/> cliente</a></li>
+                {% if not user.is_authenticated %}<li><a href="{% url 'clientForm' %}">Registrate!</a></li>{% endif %}
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'orderForm' %}">Hacer pedido!</a></li>
                 {% if perms.web.view_client %}<li><a href="{% url 'clients' %}">Lista de <br/> clientes</a></li>{% endif %}
