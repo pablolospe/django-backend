@@ -30,15 +30,43 @@ class OrderForm(forms.ModelForm):
         return products_html
 
 class ClientForm(forms.ModelForm):
-    username = forms.CharField(max_length=30, required=True, widget=forms.TextInput(attrs={'placeholder': 'Usuario'}))
-    first_name = forms.CharField(max_length=30, required=True, widget=forms.TextInput(attrs={'placeholder': 'Nombre'}))
-    last_name = forms.CharField(max_length=30, required=True, widget=forms.TextInput(attrs={'placeholder': 'Apellido'}))
-    password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
-    confirm_password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Confirmar Password'}))
+    username = forms.CharField(
+        max_length=30, required=True, 
+        widget=forms.TextInput(attrs={'placeholder': 'Usuario'})
+    )
+    first_name = forms.CharField(
+        max_length=30, required=True, 
+        widget=forms.TextInput(attrs={'placeholder': 'Nombre'})
+    )
+    last_name = forms.CharField(
+        max_length=30, required=True, 
+        widget=forms.TextInput(attrs={'placeholder': 'Apellido'})
+    )
+    password = forms.CharField(
+        required=True, 
+        widget=forms.PasswordInput(attrs={'placeholder': 'Password'})
+    )
+    confirm_password = forms.CharField(
+        required=True, 
+        widget=forms.PasswordInput(attrs={'placeholder': 'Confirmar Password'})
+    )
+    phone = forms.CharField(
+        max_length=15, required=True, 
+        widget=forms.TextInput(attrs={'placeholder': 'Teléfono'})
+    )
+    email = forms.EmailField(
+        required=True, 
+        widget=forms.EmailInput(attrs={'placeholder': 'Email'})
+    )
+    dni = forms.CharField(
+        max_length=20, required=True, 
+        widget=forms.TextInput(attrs={'placeholder': 'DNI'})
+    )
 
     class Meta:
         model = Client
-        fields = ['first_name', 'last_name', 'phone', 'email', 'dni', 'password', 'confirm_password']
+        fields = ['username', 'first_name', 'last_name', 'phone', 'email', 'dni', 'password', 'confirm_password']
+
 
     def clean(self):
         cleaned_data = super().clean()

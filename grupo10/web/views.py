@@ -41,7 +41,7 @@ def clientForm(request):
                 user=user,
                 phone=form.cleaned_data['phone'],
                 email=form.cleaned_data['email'],
-                # dni=form.cleaned_data['dni'],
+                dni=form.cleaned_data['dni'],
             )
             client.save()
 
