@@ -1,6 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from .models import Client, Product, Order
+from django.contrib.auth.models import User
 import re
 
 class OrderForm(forms.ModelForm):
@@ -52,12 +53,18 @@ class ClientForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super().clean()
         email = cleaned_data.get("email")
+        username = cleaned_data.get("username")
         clients = Client.objects.all()
-        print(clients)
+        users = User.objects.all()
+        # print(clients)
         
         for client in clients:
             if email == client.email:
                 raise ValidationError("El email ya fue ingresado")
+        
+        for user in users:
+            if username == user.username:
+                raise ValidationError("El usuario ya fue ingresado")
 
         return self.cleaned_data
 
