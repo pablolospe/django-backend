@@ -68,11 +68,11 @@ class OrderListView(LoginRequiredMixin, ListView):
     model=Order
     context_object_name='orders'
     template_name='web/orderList.html'
-    ordering=['id']
+    # ordering=['-id']
 
     def get_queryset(self):
         user = self.request.user
-        orders = Order.objects.filter(client__user=user).order_by('id')
+        orders = Order.objects.filter(client__user=user).order_by('-id')
         for order in orders:
             order.total_price = sum(product.price for product in order.products.all())
         return orders

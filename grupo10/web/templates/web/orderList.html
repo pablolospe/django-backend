@@ -12,7 +12,8 @@
     <table>
         <tr>
             <th>Fecha</th>
-            <th>Productos</th>
+            <th>Producto</th>
+            <th>Precio</th>
             <th>Total</th>
         </tr>
     {% for order in orders %}
@@ -20,14 +21,22 @@
             <td><p>{{ order.date }}</p></td>
             <td>
                 {% for product in order.products.all %}
-                <div style="display: flex; justify-content: space-between; gap: 1rem;">
+              
                     <div style="text-align: left; flex-grow: 1;">{{ product.name }}</div>
-                    <div style="text-align: right;"> ${{ product.price|floatformat:2 }}</div>
-                </div>
+                  
+              
                 {% endfor %}
             </td>
             <td>
-                <p>Total: ${{ order.total_price|floatformat:2 }}</p>
+                {% for product in order.products.all %}
+              
+                  
+                    <div style="text-align: right;"> ${{ product.price|floatformat:2 }}</div>
+              
+                {% endfor %}
+            </td>
+            <td>
+                <p>${{ order.total_price|floatformat:2 }}</p>
             </td>
         </tr>
     {% empty %}

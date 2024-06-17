@@ -5,24 +5,34 @@
 {% block titulo %} clientes {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'web/style/client.css' %}">
+<link rel="stylesheet" href="{% static 'web/style/clients.css' %}">
 {% endblock %}
 
 
 {% block main %}
-<section>
+<table>
+    <tr>
+        <th>Usuario</th>
+        <th>Nombre y Apellido</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>DNI</th>
+        <th>Rol</th>
+    </tr>
     {% for client in clients %}
-    <article>
-        <h3 >{{ client.name | title }} {{ client.lastname | title }}</h3>
-        <p >email: {{ client.email }}</p>
-        <p >phone: {{ client.phone }}</p>
-        <p >dni: {{ client.dni }}</p>
-        <br>
-    </article>
+    <tr>
+        <td><b> {{ client.user }}</b></td>
+        <td>{{ client.user.first_name | title }} {{ client.user.last_name | title }}</td>
+        <td> {{ client.email }}</td>
+        <td> {{ client.phone }}</td>
+        <td> {{ client.dni }}</td>
+        <td>{% if client.user.is_staff %} Admin {% else %} Cliente {% endif %}</td>
+
+    </tr>
     {% empty %}
     <article>
         <p>No hay clientes disponibles</p>
     </article>
     {% endfor %}
-</section>
+</table>
 {% endblock %}

@@ -2,13 +2,27 @@ main{
     border-radius: 1rem;
 }
 
-span{
-    padding-inline: 1rem;
+table {
+    border: 2px solid rgb(0, 0, 0, 0.5);
+    padding: 1rem;
+    width: 50%;
+    border-collapse: collapse;
 }
 
-article{
-    padding-top: 0.1rem;
-    background-color: wheat;
-    display: flex;
-    justify-content: space-between;
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: rgb(255, 255, 255, 0.5);
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+td {
+    vertical-align: middle;
 }

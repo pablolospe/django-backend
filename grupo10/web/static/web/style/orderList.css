@@ -1,19 +1,28 @@
-
-.hover-effect {
-    width: 20rem;
-    color: black;
-    transition: color 0.3s;
+main{
+    border-radius: 1rem;
 }
 
-.hover-effect:hover {
-    color: red;
-    cursor: pointer;
-}
-
-table{
-    border: 2px solid black;
-}
-td, th{
-    border-bottom: 2px solid black;
+table {
+    border: 2px solid rgb(0, 0, 0, 0.5);
     padding: 1rem;
-    }
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: rgb(255, 255, 255, 0.5);
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+td {
+    vertical-align: middle;
+}

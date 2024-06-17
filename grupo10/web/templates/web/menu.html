@@ -10,16 +10,22 @@
 
 
 {% block main %}
-<section>
+<table>
+    <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Categotía</th>
+    </tr>
     {% for product in products %}
-    <article>
-        <span >{{ product.name | title }} ({{ product.get_category_display }})</span>
-        <span >$ {{ product.price|floatformat:2 }}</span>
-    </article>
+    <tr>
+        <td >{{ product.name | title }} </td>
+        <td >$ {{ product.price|floatformat:2 }}</td>
+        <td >{{ product.get_category_display }}</td>
+    </tr>
     {% empty %}
     <article>
         <p>No hay productos disponibles</p>
     </article>
     {% endfor %}
-</section>
+</table>
 {% endblock %}
