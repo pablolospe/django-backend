@@ -5,7 +5,7 @@ main{
 table {
     border: 2px solid rgb(0, 0, 0, 0.5);
     padding: 1rem;
-    width: 100%;
+    width: 50%;
     border-collapse: collapse;
 }
 

@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block main %}
-<section>
+
     <table>
         <tr>
             <th>Fecha</th>
@@ -31,12 +31,12 @@
                 {% for product in order.products.all %}
               
                   
-                    <div style="text-align: right;"> ${{ product.price|floatformat:2 }}</div>
+                    <div style="text-align: right;">$ {{ product.price|floatformat:2 }}</div>
               
                 {% endfor %}
             </td>
             <td>
-                <p>${{ order.total_price|floatformat:2 }}</p>
+                <p style="text-align: right;">$ {{ order.total_price|floatformat:2 }}</p>
             </td>
         </tr>
     {% empty %}
@@ -45,5 +45,5 @@
     </article>
     {% endfor %}
     </table>
-</section>
+
 {% endblock %}
