@@ -1,0 +1,19 @@
+
+.hover-effect {
+    width: 20rem;
+    color: black;
+    transition: color 0.3s;
+}
+
+.hover-effect:hover {
+    color: red;
+    cursor: pointer;
+}
+
+table{
+    border: 2px solid black;
+}
+td, th{
+    border-bottom: 2px solid black;
+    padding: 1rem;
+    }

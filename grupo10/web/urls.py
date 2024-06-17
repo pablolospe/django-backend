@@ -15,4 +15,5 @@ urlpatterns = [
 
     path('menu/', views.menu, name='menu'),
     path('clients/', views.ClientListView.as_view(), name='clients'),
+    path('orders/', views.OrderListView.as_view(), name='orders'),
 ]

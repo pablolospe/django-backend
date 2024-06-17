@@ -1,0 +1,40 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block titulo %}Menú{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'web/style/orderList.css' %}">
+{% endblock %}
+
+{% block main %}
+<section>
+    <table>
+        <tr>
+            <th>Fecha</th>
+            <th>Productos</th>
+            <th>Total</th>
+        </tr>
+    {% for order in orders %}
+        <tr class="row">
+            <td><p>{{ order.date }}</p></td>
+            <td>
+                {% for product in order.products.all %}
+                <div style="display: flex; justify-content: space-between; gap: 1rem;">
+                    <div style="text-align: left; flex-grow: 1;">{{ product.name }}</div>
+                    <div style="text-align: right;"> ${{ product.price|floatformat:2 }}</div>
+                </div>
+                {% endfor %}
+            </td>
+            <td>
+                <p>Total: ${{ order.total_price|floatformat:2 }}</p>
+            </td>
+        </tr>
+    {% empty %}
+    <article>
+        <p>No hay pedidos realizados</p>
+    </article>
+    {% endfor %}
+    </table>
+</section>
+{% endblock %}

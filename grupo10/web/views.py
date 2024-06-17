@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import *
-from .models import Product, Client
+from .models import Product, Client, Order
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import logout
@@ -63,6 +63,19 @@ class ClientListView(LoginRequiredMixin, ListView):
     context_object_name='clients'
     template_name='web/clients.html'
     ordering=['id']
+
+class OrderListView(LoginRequiredMixin, ListView):
+    model=Order
+    context_object_name='orders'
+    template_name='web/orderList.html'
+    ordering=['id']
+
+    def get_queryset(self):
+        user = self.request.user
+        orders = Order.objects.filter(client__user=user).order_by('id')
+        for order in orders:
+            order.total_price = sum(product.price for product in order.products.all())
+        return orders
 
 @login_required
 def productForm(request):
