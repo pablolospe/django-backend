@@ -20,10 +20,11 @@ class OrderForm(forms.ModelForm):
         products_html = '<table class="table">'
         products_html += '<tr><th></th><th>Producto</th><th>Precio</th></tr>'
         for product in self.fields['products'].queryset:
+            formatted_price = f'{product.price:.2f}'
             products_html += f'<tr>'
             products_html += f'<td><input type="checkbox" name="products" value="{product.id}"></td>'
             products_html += f'<td>{product.name}</td>'
-            products_html += f'<td>{product.price}</td>'
+            products_html += f'<td>{formatted_price}</td>'
             # products_html += f'<td>{product.category}</td>'
             products_html += f'</tr>'
         products_html += '</table>'
