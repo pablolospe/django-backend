@@ -20,6 +20,10 @@
   <p><strong>Categoría:</strong> {{ product.category }}</p>
   <p><strong>Descripción:</strong> {{ product.description }}</p>
   <br/>
+  {% if perms.web.create_product %}
+  <a href="{% url 'productEdit' product.id %}">Editar</a>
+  <a href="{% url 'productDelete' product.id %}">Borrar</a>
+  {% endif %}
   <br/>
   <br/>
   <a href="{% url 'menu' %}">Volver a la lista de productos</a>

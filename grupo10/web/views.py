@@ -110,6 +110,40 @@ def productDetail(request, product_id):
     }
     return render(request, 'web/productDetail.html', context)    
 
+@login_required
+def productEdit(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'El producto fue actualizado con éxito')
+            return redirect('index')
+    else:
+        form = ProductForm(instance=product)
+    
+    context = {
+        'productForm': form,
+        'product': product
+    }
+    return render(request, 'web/productEdit.html', context)
+
+@login_required
+def productDelete(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    if request.method == 'POST':
+        product.delete()
+        messages.success(request, 'El producto fue eliminado con éxito')
+        return redirect('index')
+
+    context = {
+        'product': product
+    }
+    return render(request, 'web/productDelete.html', context)
+
+
 def orderForm(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
@@ -124,6 +158,11 @@ def orderForm(request):
         form = OrderForm()
 
     return render(request, 'web/orderForm.html', {'form': form})
+
+
+
+
+
 
 # 'products': [
 #     {'name': 'Classic Burger', 'price': 50.0, 'category': 'MAIN', 'description': 'A classic beef burger with lettuce, tomato, and cheese.'},

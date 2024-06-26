@@ -1,0 +1,22 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+
+{% block titulo %} menú {% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'web/style/productDetail.css' %}">
+{% endblock %}
+
+
+{% block main %}
+
+  <h2>Editar Producto</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ productForm.as_p }}
+    <button type="submit">Guardar Cambios</button>
+  </form>
+  <a href="{% url 'index' %}">Cancelar</a>
+
+{% endblock %}

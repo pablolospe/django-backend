@@ -1,0 +1,23 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+
+{% block titulo %} menú {% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'web/style/productDetail.css' %}">
+{% endblock %}
+
+
+{% block main %}
+
+  <h2>Eliminar Producto</h2>
+  <p>¿Estás seguro que deseas eliminar el producto "{{ product.name }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Sí, eliminar</button>
+    <a href="{% url 'index' %}">Cancelar</a>
+  </form>
+
+{% endblock %}
+
