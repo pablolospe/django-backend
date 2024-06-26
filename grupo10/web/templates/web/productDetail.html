@@ -16,8 +16,9 @@
   <h3>Detalle del Producto</h3>
   <br/>
   <h3>{{ product.name }}</h3>
-  <p><strong>Precio:</strong> {{ product.price }}</p>
-  <p><strong>Categoría:</strong> {{ product.category }}</p>
+  <br/>
+  <p><strong>Precio:</strong> $ {{ product.price|floatformat:2 }}</p>
+  <p><strong>Categoría:</strong> {{ product.get_category_display  }}</p>
   <p><strong>Descripción:</strong> {{ product.description }}</p>
   <br/>
   {% if perms.web.create_product %}
