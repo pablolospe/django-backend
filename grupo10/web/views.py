@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
 from .models import Product, Client, Order
 from django.contrib.auth.models import User
@@ -102,7 +102,13 @@ def productForm(request):
             return redirect('index')
 
     return render(request, 'web/productForm.html', context)
-    
+
+def productDetail(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    context = {
+        'product': product
+    }
+    return render(request, 'web/productDetail.html', context)    
 
 def orderForm(request):
     if request.method == 'POST':

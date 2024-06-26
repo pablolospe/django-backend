@@ -18,7 +18,8 @@
     </tr>
     {% for product in products %}
     <tr>
-        <td >{{ product.name | title }} </td>
+        <td><a href="{% url 'productDetail' product.id %}">{{ product.name | title }}</a></td>
+        <!-- <td >{{ product.name | title }} </td> -->
         <td >$ {{ product.price|floatformat:2 }}</td>
         <td >{{ product.get_category_display }}</td>
     </tr>
