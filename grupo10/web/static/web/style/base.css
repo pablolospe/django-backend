@@ -17,9 +17,6 @@ header > nav > ul > li, a, h2 {
     background-color: rgb(249, 232, 199);
 }
 
-footer{
-    background-color: rgb(249, 232, 199);
-}
 .centered{
     display: flex;
     justify-content: center;
@@ -67,4 +64,7 @@ a:hover{
     right: 10rem;
     color: black;
     font-size: small;
+}
+.cremita{
+    background-color: rgb(249, 232, 199);
 }

@@ -22,7 +22,6 @@
 <form method="POST" action="{% url 'clientForm' %}">
 
     {% csrf_token %}
-    <!-- {{ clientForm.as_p }} -->
     
         {{ clientForm.username }}
         {% if clientForm.username.errors %}
