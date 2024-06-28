@@ -1,7 +1,7 @@
 {% extends "web/base.html" %}
 {% load static %}
 
-{% block titulo %} pedido {% endblock %}
+{% block titulo %}pedido{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'web/style/orderForm.css' %}">
@@ -23,19 +23,26 @@
     {% csrf_token %}
 
     <!-- Renderizamos los productos en una tabla personalizada -->
-    {{ form.render_products|safe }}
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th></th>
+        </tr>
+        {% for product in products %}
+        <tr>
+            <td><input type="checkbox" name="products" value="{{ product.id }}"></td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price|floatformat:2 }}</td>
+            <td>
+                <img src="{{ product.description }}" alt="{{ product.description }}"
+                    style="height: 3rem; border-radius: 2rem; width: 3rem; margin-left: 2rem;">
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 
-    <!-- Renderizamos el campo cliente -->
-    <!-- <div class="form-group">
-        {{ form.client.label_tag }} {{ form.client }}
-        {% if form.client.errors %}
-        <div class="error">
-            {% for error in form.client.errors %}
-            <p>{{ error }}</p>
-            {% endfor %}
-        </div>
-        {% endif %}
-    </div> -->
     <br>
     <input class="hover-effect" type="submit" value="Enviar">
 </form>

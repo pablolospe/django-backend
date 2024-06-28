@@ -16,19 +16,30 @@ class OrderForm(forms.ModelForm):
         super(OrderForm, self).__init__(*args, **kwargs)
         self.fields['products'].queryset = Product.objects.all()
 
-    def render_products(self):
-        products_html = '<table class="table">'
-        products_html += '<tr><th></th><th>Producto</th><th>Precio</th></tr>'
-        for product in self.fields['products'].queryset:
-            formatted_price = f'{product.price:.2f}'
-            products_html += f'<tr>'
-            products_html += f'<td><input type="checkbox" name="products" value="{product.id}"></td>'
-            products_html += f'<td>{product.name}</td>'
-            products_html += f'<td>{formatted_price}</td>'
-            # products_html += f'<td>{product.category}</td>'
-            products_html += f'</tr>'
-        products_html += '</table>'
-        return products_html
+    # def render_products(self):
+    #     products_html = '<table class="table">'
+    #     products_html += '<tr><th></th><th>Producto</th><th>Precio</th></tr>'
+    #     for product in self.fields['products'].queryset:
+    #         formatted_price = f'{product.price:.2f}'
+    #         products_html += f'<tr>'
+    #         products_html += f'<td><input type="checkbox" name="products" value="{product.id}"></td>'
+    #         products_html += f'<td>{product.name}</td>'
+    #         products_html += f'<td>{formatted_price}</td>'
+    #         # products_html += f'<td>{product.category}</td>'
+    #         products_html += f'</tr>'
+    #     products_html += '</table>'
+    #     return products_html
+
+    def clean(self):
+        cleaned_data = super().clean()
+        name = cleaned_data.get("name")
+        products = Product.objects.all()
+
+        for product in products:
+            if name == product.name:
+                raise ValidationError("El producto ya fue ingresado")
+
+        return cleaned_data
 
 class ClientForm(forms.ModelForm):
     username = forms.CharField(

@@ -157,10 +157,22 @@ def orderForm(request):
     else:
         form = OrderForm()
 
-    return render(request, 'web/orderForm.html', {'form': form})
+    products = Product.objects.all()
+    return render(request, 'web/orderForm.html', {'form': form, 'products': products})
 
 
 
+# def order_view(request):
+#     if request.method == 'POST':
+#         form = OrderForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             # Redirigir o hacer algo más
+#     else:
+#         form = OrderForm()
+    
+#     products = Product.objects.all()
+#     return render(request, 'order_form.html', {'form': form, 'products': products})
 
 
 
