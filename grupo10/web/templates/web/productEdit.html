@@ -5,18 +5,22 @@
 {% block titulo %} menú {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'web/style/productDetail.css' %}">
+<link rel="stylesheet" href="{% static 'web/style/productEdit.css' %}">
 {% endblock %}
 
 
 {% block main %}
 
   <h2>Editar Producto</h2>
+  <br>
+  <br>
   <form method="post">
     {% csrf_token %}
     {{ productForm.as_p }}
-    <button type="submit">Guardar Cambios</button>
+    <button class="hover-effect" type="submit">Guardar Cambios</button>
   </form>
-  <a href="{% url 'index' %}">Cancelar</a>
+  <br>
+  <br>
+  <a class="cancelar" href="{% url 'menu' %}">Cancelar</a>
 
 {% endblock %}

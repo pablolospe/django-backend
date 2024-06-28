@@ -5,18 +5,24 @@
 {% block titulo %} menú {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'web/style/productDetail.css' %}">
+<link rel="stylesheet" href="{% static 'web/style/productEdit.css' %}">
 {% endblock %}
 
 
 {% block main %}
 
   <h2>Eliminar Producto</h2>
+  <br>
   <p>¿Estás seguro que deseas eliminar el producto "{{ product.name }}"?</p>
   <form method="post">
     {% csrf_token %}
-    <button type="submit">Sí, eliminar</button>
-    <a href="{% url 'index' %}">Cancelar</a>
+    <br>
+    <div class="buttons">
+
+      <button type="submit">Sí, eliminar</button>
+      
+      <a class="cancelar" href="{% url 'index' %}">Cancelar</a>
+    </div>
   </form>
 
 {% endblock %}

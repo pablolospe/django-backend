@@ -110,10 +110,10 @@ class ProductForm(forms.ModelForm):
         model = Product
         fields = ['name', 'price', 'category', 'description']
         widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Nombre del plato', 'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'placeholder': 'Nombre', 'class': 'form-control'}),
             'price': forms.NumberInput(attrs={'placeholder': 'Precio', 'class': 'form-control'}),
             'category': forms.Select(attrs={'class': 'form-control'}),
-            'description': forms.TextInput(attrs={'placeholder': 'Descripción', 'class': 'form-control'}),
+            'description': forms.TextInput(attrs={'placeholder': 'URL de Imagen', 'class': 'form-control'}),
         }
 
     def clean_name(self):
