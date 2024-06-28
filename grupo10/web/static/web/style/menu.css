@@ -3,16 +3,18 @@ main{
 }
 
 table {
-    border: 2px solid rgb(0, 0, 0, 0.5);
+    /* border: 2px solid rgb(0, 0, 0, 0.5); */
     padding: 1rem;
     width: 50%;
     border-collapse: collapse;
+    border-radius: 1rem;
 }
 
 th, td {
-    border: 1px solid #ddd;
+    border-radius: 1rem;
+    /* border: 1px solid #ddd; */
     padding: 8px;
-    text-align: left;
+    text-align: center;
 }
 
 th {
@@ -25,4 +27,21 @@ tr:nth-child(even) {
 
 td {
     vertical-align: middle;
+}
+td > a {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 2rem;
+    background-color: wheat;
+    transition: 0.5s;
+    margin: 0%;
+    border-radius: 1rem;
+}
+img{
+    background-color: transparent;
+}
+a:hover{
+    background-color: rgb(249, 232, 199);
 }

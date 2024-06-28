@@ -13,10 +13,10 @@ body{
 header, main, footer{
     padding: 1rem;
 }
-header, nav, ul, li, a, h2{
+header > nav > ul > li, a, h2 {
     background-color: rgb(249, 232, 199);
-    
 }
+
 footer{
     background-color: rgb(249, 232, 199);
 }

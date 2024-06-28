@@ -14,14 +14,24 @@
     <tr>
         <th>Producto</th>
         <th>Precio</th>
-        <th>Categotía</th>
+        <th>Categoría</th>
+        <!-- <th></th> -->
     </tr>
     {% for product in products %}
     <tr>
-        <td><a href="{% url 'productDetail' product.id %}">{{ product.name | title }}</a></td>
+        <td>
+            <a href="{% url 'productDetail' product.id %}">
+                <img src="{{ product.description }}" alt="{{ product.description }}"
+                    style="height: 4rem; border-radius: 2rem; width: 4rem; margin-left: 2rem;">
+                {{ product.name | title }}
+            </a>
+        </td>
         <!-- <td >{{ product.name | title }} </td> -->
-        <td >$ {{ product.price|floatformat:2 }}</td>
-        <td >{{ product.get_category_display }}</td>
+        <td>$ {{ product.price|floatformat:2 }}</td>
+        <td>{{ product.get_category_display }}</td>
+        <!-- <td >
+            <img src="{{ product.description }}" alt="{{ product.description }}" style="max-height: 4rem; border-radius: 2rem; max-width: 4rem;">
+        </td> -->
     </tr>
     {% empty %}
     <article>

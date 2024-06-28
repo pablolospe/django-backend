@@ -11,23 +11,25 @@
 
 {% block main %}
 
-
-
-  <h3>Detalle del Producto</h3>
-  <br/>
+  <!-- <h3>Detalle del Producto</h3> -->
+  <!-- <br/> -->
   <h3>{{ product.name }}</h3>
+  <img src="{{ product.description }}" alt="{{ product.name }}" style="height: 8rem; border-radius: 2rem; width: auto;">
   <br/>
   <p><strong>Precio:</strong> $ {{ product.price|floatformat:2 }}</p>
   <p><strong>Categoría:</strong> {{ product.get_category_display  }}</p>
-  <p><strong>Descripción:</strong> {{ product.description }}</p>
+  <!-- <p><strong>Descripción:</strong> {{ product.description }}</p> -->
   <br/>
-  {% if perms.web.create_product %}
-  <a href="{% url 'productEdit' product.id %}">Editar</a>
-  <a href="{% url 'productDelete' product.id %}">Borrar</a>
+  {% if perms.web.user_admin %}
+  <div style="display: flex; gap: 0.5em;">
+
+    <a class="buttons" href="{% url 'productEdit' product.id %}">Editar</a>
+    <a class="buttons" href="{% url 'productDelete' product.id %}">Borrar</a>
+  </div>
   {% endif %}
   <br/>
   <br/>
-  <a href="{% url 'menu' %}">Volver a la lista de productos</a>
+  <a class="buttons" href="{% url 'menu' %}">Volver a la lista de productos</a>
 
 
 {% endblock %}
