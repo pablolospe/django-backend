@@ -21,29 +21,62 @@
 
 <form method="POST" action="{% url 'orderForm' %}">
     {% csrf_token %}
-
+    
     <!-- Renderizamos los productos en una tabla personalizada -->
     <table class="table">
         <tr>
-            <th></th>
+            <th>Seleccionar</th>
             <th>Producto</th>
             <th>Precio</th>
-            <th></th>
+            <!-- <th>Cantidad</th> -->
         </tr>
         {% for product in products %}
         <tr>
-            <td><input type="checkbox" name="products" value="{{ product.id }}"></td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.price|floatformat:2 }}</td>
+            <td><input type="checkbox" name="products" value="{{ product.id }}" class="product-checkbox"></td>
+            <td>
+                {{ product.name }}
+            </td>
+            <td class="product-price">{{ product.price|floatformat:2 }}</td>
             <td>
                 <img src="{{ product.description }}" alt="{{ product.description }}"
                     style="height: 3rem; border-radius: 2rem; width: 3rem; margin-left: 2rem;">
             </td>
+            <!-- <td><input type="number" name="quantities_{{ product.id }}" value="1" min="1" class="quantity-input"></td> -->
         </tr>
         {% endfor %}
     </table>
 
+    <h3>Total: $<span id="total-price">0.00</span></h3>
     <br>
     <input class="hover-effect" type="submit" value="Enviar">
 </form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const checkboxes = document.querySelectorAll('.product-checkbox');
+        const quantityInputs = document.querySelectorAll('.quantity-input');
+        const totalPriceElement = document.getElementById('total-price');
+
+        function calculateTotal() {
+            let total = 0;
+            checkboxes.forEach((checkbox, index) => {
+                if (checkbox.checked) {
+                    const price = parseFloat(document.querySelectorAll('.product-price')[index].textContent);
+                    const quantity = 1;
+                    // const quantity = parseInt(quantityInputs[index].value);
+                    total += price * quantity;
+                }
+            });
+            totalPriceElement.textContent = total.toFixed(2);
+        }
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', calculateTotal);
+        });
+
+        quantityInputs.forEach(input => {
+            input.addEventListener('input', calculateTotal);
+        });
+    });
+</script>
 {% endblock %}

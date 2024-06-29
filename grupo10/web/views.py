@@ -56,6 +56,7 @@ def menu(request):
     context = {
         'products': products
     }
+    ordering=['category']
     return render(request, 'web/menu.html', context)
 
 class ClientListView(LoginRequiredMixin, ListView):
@@ -68,7 +69,6 @@ class OrderListView(LoginRequiredMixin, ListView):
     model=Order
     context_object_name='orders'
     template_name='web/orderList.html'
-    # ordering=['-id']
 
     def get_queryset(self):
         user = self.request.user
@@ -143,15 +143,20 @@ def productDelete(request, product_id):
     }
     return render(request, 'web/productDelete.html', context)
 
-
 def orderForm(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
             order = form.save(commit=False)
-            order.client = request.user.client  # Asume que el usuario tiene un objeto cliente asociado
+            order.client = request.user.client
             order.save()
-            form.save_m2m()  # Guarda las relaciones many-to-many
+
+            selected_products = form.cleaned_data['products']
+            for product in selected_products:
+                quantity = int(request.POST.get(f'quantities_{product.id}', 1))
+                for _ in range(quantity):
+                    order.products.add(product)
+
             messages.success(request, 'Pedido realizado con éxito')
             return redirect('index')
     else:
