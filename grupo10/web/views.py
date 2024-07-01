@@ -52,11 +52,11 @@ def clientForm(request):
 
 
 def menu(request):
-    products = Product.objects.all().order_by('id')
+    products = Product.objects.all().order_by('-category')
     context = {
         'products': products
     }
-    ordering=['category']
+    # ordering=['category']
     return render(request, 'web/menu.html', context)
 
 class ClientListView(LoginRequiredMixin, ListView):
