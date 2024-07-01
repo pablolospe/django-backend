@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-m&qv4o(dk1b9y99q=ye#2ct9z(h(n-m-yqqoq1sv_ftard^zhs
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pablolospe.pythonanywhere.com']
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -138,4 +138,5 @@ LOGOUT_REDIRECT_URL = 'index'
 
 AUTH_USER_MODEL = 'auth.User'
 
+ALLOWED_HOSTS = ['yourusername.pythonanywhere.com', '127.0.0.1']
 
