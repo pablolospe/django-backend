@@ -162,7 +162,7 @@ def orderForm(request):
     else:
         form = OrderForm()
 
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('-category')
     return render(request, 'web/orderForm.html', {'form': form, 'products': products})
 
 
