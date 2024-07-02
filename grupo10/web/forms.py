@@ -16,20 +16,6 @@ class OrderForm(forms.ModelForm):
         super(OrderForm, self).__init__(*args, **kwargs)
         self.fields['products'].queryset = Product.objects.all()
 
-    # def render_products(self):
-    #     products_html = '<table class="table">'
-    #     products_html += '<tr><th></th><th>Producto</th><th>Precio</th></tr>'
-    #     for product in self.fields['products'].queryset:
-    #         formatted_price = f'{product.price:.2f}'
-    #         products_html += f'<tr>'
-    #         products_html += f'<td><input type="checkbox" name="products" value="{product.id}"></td>'
-    #         products_html += f'<td>{product.name}</td>'
-    #         products_html += f'<td>{formatted_price}</td>'
-    #         # products_html += f'<td>{product.category}</td>'
-    #         products_html += f'</tr>'
-    #     products_html += '</table>'
-    #     return products_html
-
     def clean(self):
         cleaned_data = super().clean()
         name = cleaned_data.get("name")
@@ -74,11 +60,9 @@ class ClientForm(forms.ModelForm):
         max_length=20, required=True, 
         widget=forms.TextInput(attrs={'placeholder': 'DNI'})
     )
-
     class Meta:
         model = Client
         fields = ['username', 'first_name', 'last_name', 'phone', 'email', 'dni', 'password', 'confirm_password']
-
 
     def clean(self):
         cleaned_data = super().clean()
