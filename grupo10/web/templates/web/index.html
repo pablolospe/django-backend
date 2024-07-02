@@ -11,6 +11,7 @@
 {% block main %}
 <!-- <h1 class="centered">Bienvenid@ {{ nombre }}</h1> -->
 <!-- <p class="centered">Hoy es {{ fecha }}</p> -->
-<img src="{% static 'web/img/comida.webp' %}" alt="foto mia">
+<a style="background-color: transparent;" href="{% url 'menu' %}" >
+    <img src="{% static 'web/img/comida.webp' %}" alt="foto mia">
+</a>
 {% endblock %}
-

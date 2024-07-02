@@ -1,15 +1,20 @@
 img{
-    margin: 1rem;
-    max-height: 10rem;
+    /* margin: 1rem; */
+    max-height: 14rem;
     border-radius: 2rem;
-}
-h1{
-    /* background-color: blueviolet; */
+    background-color: transparent;
+    filter: drop-shadow(6px 6px 16px);
+    transition: filter 0.3s, transform 0.5s;
+} 
+img:hover{
+    transform: 1s;
+    filter: drop-shadow(6px 6px 16px white);
+    transform: scale(1.8) rotate(360deg);
+}h1{
     border-radius: 0.5rem;
     border-top-right-radius: 2rem;
     padding: 1rem;
 }
-
 h1, p {
     width: 20rem;
     margin: 0.5rem;
