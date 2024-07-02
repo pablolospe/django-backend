@@ -13,13 +13,13 @@
 
   <!-- <h3>Detalle del Producto</h3> -->
   <h3>{{ product.name }}</h3>
-  <br/>
+  <br>
   <img src="{{ product.description }}" alt="{{ product.name }}" class="dropshadow" style="height: 8rem; width: auto; background-color: transparent; filter: drop-shadow(6px 6px 20px);">
-  <br/>
+  <br>
   <p><strong>Precio:</strong> $ {{ product.price|floatformat:2 }}</p>
   <p><strong>Categoría:</strong> {{ product.get_category_display  }}</p>
   <!-- <p><strong>Descripción:</strong> {{ product.description }}</p> -->
-  <br/>
+  <br>
   {% if perms.web.user_admin %}
   <div style="display: flex; gap: 0.5em;">
 
@@ -27,8 +27,8 @@
     <a class="buttons" href="{% url 'productDelete' product.id %}">Borrar</a>
   </div>
   {% endif %}
-  <br/>
-  <br/>
+  <br>
+  <br>
   <a class="buttons" href="{% url 'menu' %}">Volver a la lista de productos</a>
 
 
