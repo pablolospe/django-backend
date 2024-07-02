@@ -32,14 +32,17 @@
         </tr>
         {% for product in products %}
         <tr>
-            <td><input type="checkbox" name="products" value="{{ product.id }}" class="product-checkbox"></td>
+            <td style="display: flex; ">
+                <input type="checkbox" name="products" value="{{ product.id }}" class="product-checkbox">
+                <img src="{{ product.description }}" alt="{{ product.description }}"
+                style="height: 3rem; border-radius: 2rem; width: 3rem; margin-left: 2rem;">
+            
+            </td>
             <td>
                 {{ product.name }}
             </td>
             <td class="product-price">{{ product.price|floatformat:2 }}</td>
             <td>
-                <img src="{{ product.description }}" alt="{{ product.description }}"
-                    style="height: 3rem; border-radius: 2rem; width: 3rem; margin-left: 2rem;">
             </td>
             <!-- <td><input type="number" name="quantities_{{ product.id }}" value="1" min="1" class="quantity-input"></td> -->
         </tr>
@@ -48,7 +51,7 @@
 
     <h3>Total: $<span id="total-price">0.00</span></h3>
     <br>
-    <input class="hover-effect" type="submit" value="Enviar">
+    <input class="hover-effect" id="button" type="submit" value="Enviar" style="width: 12rem;cursor: pointer;">
 </form>
 
 <script>

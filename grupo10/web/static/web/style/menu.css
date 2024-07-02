@@ -1,30 +1,23 @@
 main{
     border-radius: 1rem;
 }
-
 table {
-    /* border: 2px solid rgb(0, 0, 0, 0.5); */
     padding: 1rem;
     width: 50%;
     border-collapse: collapse;
     border-radius: 1rem;
 }
-
 th, td {
-    border-radius: 1rem;
-    /* border: 1px solid #ddd; */
     padding: 8px;
     text-align: center;
 }
-
 th {
+    border-radius: 1rem;
     background-color: rgb(255, 255, 255, 0.5);
 }
-
 tr:nth-child(even) {
     background-color: #f9f9f9;
 }
-
 td {
     vertical-align: middle;
 }
@@ -39,9 +32,15 @@ td > a {
     margin: 0%;
     border-radius: 1rem;
 }
-img{
+.img{
     background-color: transparent;
     filter: drop-shadow(6px 6px 16px);
+    transition: filter 0.3s, transform 0.5s;
+}
+.img:hover{
+    transform: 1s;
+    filter: drop-shadow(6px 6px 16px white);
+    transform: scale(1.2) rotate(27deg);
 }
 a:hover{
     background-color: rgb(249, 232, 199);

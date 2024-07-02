@@ -1,40 +1,74 @@
-form{
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+main{
+    border-radius: 1rem;
 }
-
-input{
+table {
+    padding: 1rem;
+    width: 50%;
+    border-collapse: collapse;
+    border-radius: 1rem;
+}
+th, td {
+    border-radius: 1rem;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background-color: rgb(255, 255, 255, 0.5);
+}
+td {
+    vertical-align: middle;
+}
+td > a {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 2rem;
+    background-color: wheat;
+    transition: 0.5s;
+    margin: 0%;
+    border-radius: 1rem;
+}
+img{
+    background-color: transparent;
+    cursor: pointer;
+    filter: drop-shadow(6px 6px 16px);
+    transition: filter 0.3s, transform 0.5s; /* Transición de 1 segundo para el filtro */
+}
+img:hover{
+    transform: 1s;
+    filter: drop-shadow(6px 6px 16px white);
+    transform: scale(1.2) rotate(27deg); /* Escala la imagen a 1.2 veces su tamaño original */
+}
+#button{
     background-color: white;
     padding: 0.5rem;
     border-radius: 2rem;
     margin-left: 2rem;
     width: 2rem;
+    cursor: pointer;
 }
-select{
-    background-color: white;
-    padding-right: 1rem;
-    padding: 0.5rem;
-    border-radius: 2rem;
-}
-
 .hover-effect {
     width: 20rem;
     color: black;
     transition: color 0.3s;
 }
-
 .hover-effect:hover {
     color: red;
     cursor: pointer;
 }
 
-.error, p{
-    justify-content: center;
-    align-self: center;
-    color: red;
-    font-size: smaller;
-    margin-top: -0.2rem;
+/* form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+select{
+    background-color: white;
+    padding-right: 1rem;
+    padding: 0.5rem;
+    border-radius: 2rem;
 }
 th{
     text-align: center;
@@ -52,11 +86,26 @@ td:nth-child(3) {
     text-align: end;
     width: 1rem;
 }
+th, td {
+    border-radius: 1rem;
+    padding: 8px;
+    text-align: center;
+}
+th {
+    background-color: rgb(255, 255, 255, 0.5);
+}
+.table{
+    padding: 1rem;
+    width: 50%;
+    border-collapse: collapse;
+    border-radius: 1rem;
+}
 .table{
     margin-inline: 4rem;
     justify-content: center;
-}
+} 
 img{
     background-color: transparent;
     filter: drop-shadow(3px 6px 12px);
-}
+} 
+*/
