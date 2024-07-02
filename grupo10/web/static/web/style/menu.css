@@ -41,6 +41,7 @@ td > a {
 }
 img{
     background-color: transparent;
+    filter: drop-shadow(6px 6px 16px);
 }
 a:hover{
     background-color: rgb(249, 232, 199);

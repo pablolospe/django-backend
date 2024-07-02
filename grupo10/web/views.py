@@ -56,7 +56,6 @@ def menu(request):
     context = {
         'products': products
     }
-    # ordering=['category']
     return render(request, 'web/menu.html', context)
 
 class ClientListView(LoginRequiredMixin, ListView):

@@ -14,7 +14,7 @@
   <!-- <h3>Detalle del Producto</h3> -->
   <h3>{{ product.name }}</h3>
   <br/>
-  <img src="{{ product.description }}" alt="{{ product.name }}" style="height: 8rem; border-radius: 2rem; width: auto;">
+  <img src="{{ product.description }}" alt="{{ product.name }}" class="dropshadow" style="height: 8rem; width: auto; background-color: transparent; filter: drop-shadow(6px 6px 20px);">
   <br/>
   <p><strong>Precio:</strong> $ {{ product.price|floatformat:2 }}</p>
   <p><strong>Categoría:</strong> {{ product.get_category_display  }}</p>
