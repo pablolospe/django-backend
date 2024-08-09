@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'web',
 ]
 
@@ -138,5 +139,5 @@ LOGOUT_REDIRECT_URL = 'index'
 
 AUTH_USER_MODEL = 'auth.User'
 
-ALLOWED_HOSTS = ['yourusername.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['yourusername.pythonanywhere.com', '127.0.0.1', 'localhost']
 
